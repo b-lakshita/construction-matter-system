@@ -2,10 +2,1013 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=Construction%20Matter%20System.dc.html">
-<title>Construction Matter System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-<body style="font-family:Georgia,serif;padding:40px">
-<p>Opening the Construction Matter System&hellip; If nothing happens, <a href="Construction%20Matter%20System.dc.html">click here</a>.</p>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/broadsheet-cd5afbf2-854b-443b-b13a-d65a35bab2e0/styles.css">
+  <style>
+    body{margin:0}
+    a{color:var(--color-accent-700)} a:hover{color:var(--color-accent-800)}
+    @keyframes cms-fade{from{opacity:0}to{opacity:1}}
+  </style>
+</helmet>
+<div style="min-height:100vh;font-size:14px">
+
+  <!-- TOOLBAR -->
+  <div style="position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:20px;background:var(--color-surface);border-bottom:1px solid var(--color-divider);padding:0 24px;height:56px">
+    <button onClick="{{ goOverview }}" title="Return to the overview" style="background:none;border:none;cursor:pointer;font-family:var(--font-heading);font-variant:small-caps;letter-spacing:1.5px;font-size:17px;font-weight:600;color:var(--color-text);padding:0;white-space:nowrap">Construction Matter System</button>
+    <div style="display:flex;align-items:center;justify-content:center;gap:4px;flex:1;height:100%">
+      <button style="{{ tabOverview }}" onClick="{{ goOverview }}">Overview</button>
+      <button style="{{ tabMatters }}" onClick="{{ goMatters }}">Matters</button>
+      <button style="{{ tabOpen }}" onClick="{{ goOpen }}" title="{{ openTitle }}">{{ openLabel }}</button>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="btn btn-secondary" onClick="{{ onClocks }}">Clocks</button>
+      <button class="btn btn-secondary" onClick="{{ onReview }}" style="position:relative">Review<sc-if value="{{ hasReview }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:-8px;right:-8px;background:var(--color-accent);color:var(--color-bg);border-radius:2px;font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:600;padding:1px 5px">{{ reviewCount }}</span></sc-if></button>
+      <button class="btn btn-secondary" onClick="{{ onAudit }}">Audit</button>
+      <button class="btn btn-primary" onClick="{{ onNew }}">New matter</button>
+    </div>
+  </div>
+
+  <!-- PAGE 1 · OVERVIEW -->
+  <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Overview" style="max-width:1060px;margin:0 auto;padding:72px 32px 96px;animation:cms-fade .3s">
+    <h1 style="font-variant:small-caps;letter-spacing:3px;font-size:30px;font-weight:600;margin:0">Construction Matter System</h1>
+    <p style="font-size:16px;font-style:italic;color:var(--color-neutral-700);margin:12px 0 0;max-width:64ch;text-wrap:pretty">A matter, limitation and compliance record for commercial construction suits before the Commercial Courts. The system prepares the record and the drafts; every operative step awaits counsel's confirmation and is entered in the audit record.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:44px;margin-top:60px">
+      <div>
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">Scope of Automation</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-700);margin:10px 0 0;text-wrap:pretty">The system acts of its own motion in one instance only: the file locks against a written statement arriving after day 120, where the statute admits no discretion. Every other step awaits counsel.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">Rules of Practice</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-700);margin:10px 0 0;text-wrap:pretty">The rules applied at intake — interrogatories by leave, originals for impounding, notice before application — are the practice's own, recorded and versioned. The intelligence applying them is rented and replaceable.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">The Audit Record</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--color-neutral-700);margin:10px 0 0;text-wrap:pretty">Every position traces to a rule, a date, a document and a signature. Each entry names its actor — engine or counsel — and the record is append-only.</p>
+      </div>
+    </div>
+    <div style="margin-top:72px">
+      <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">The Gates</div>
+      <table class="table" style="margin-top:14px">
+        <thead><tr>
+          <th style="width:19%">Gate</th>
+          <th>What the law demands</th>
+          <th>If missed</th>
+          <th>Who decides</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Mediation <span style="font-family:ui-monospace,Menlo,monospace;font-weight:400;font-size:12px">s. 12A</span></td><td style="font-size:13px;color:var(--color-neutral-700)">Mediation unless urgency is made out on the facts</td><td style="font-size:13px;color:var(--color-neutral-700)">Rejection — repairable only by mediating</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel may override with reasons</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Filing</td><td style="font-size:13px;color:var(--color-neutral-700)">Fees on true valuation; both verifications</td><td style="font-size:13px;color:var(--color-neutral-700)">Curable — at cost</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel settles the plaint</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">The 120-day clock</td><td style="font-size:13px;color:var(--color-neutral-700)">WS in <span style="font-family:ui-monospace,Menlo,monospace">30</span>; outer limit <span style="font-family:ui-monospace,Menlo,monospace">120</span></td><td style="font-size:13px;color:var(--color-accent-2-800)">Right lost — never repairable</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel authorises the consequence</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Documents</td><td style="font-size:13px;color:var(--color-neutral-700)">Disclose, inspect, produce</td><td style="font-size:13px;color:var(--color-neutral-700)">Reliance barred without leave</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel sends the notices</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Admissions</td><td style="font-size:13px;color:var(--color-neutral-700)">Notices to admit; <span style="font-family:ui-monospace,Menlo,monospace">O. XII R. 6</span></td><td style="font-size:13px;color:var(--color-neutral-700)">Refusal shifts costs</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel judges the admission</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Trial evidence</td><td style="font-size:13px;color:var(--color-neutral-700)"><span style="font-family:ui-monospace,Menlo,monospace">s. 65B</span> certificates; stamping</td><td style="font-size:13px;color:var(--color-neutral-700)">Inadmissible until cured</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel instructs the route</td></tr>
+          <tr><td style="font-family:var(--font-heading);font-weight:600">Judgment</td><td style="font-size:13px;color:var(--color-neutral-700)">Submissions</td><td style="font-size:13px;color:var(--color-neutral-700)">—</td><td style="font-size:13px;color:var(--color-neutral-700)">Counsel argues</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:44px">
+      <button class="btn btn-primary" onClick="{{ goMatters }}">Open the matters board</button>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- PAGE 2A · MATTERS BOARD -->
+  <sc-if value="{{ isBoard }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Matters board" style="max-width:1320px;margin:0 auto;padding:48px 32px 96px;animation:cms-fade .3s">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px">
+      <h1 style="font-size:26px;font-weight:600;margin:0">Matters</h1>
+      <button class="btn btn-primary" onClick="{{ onNew }}">Institute a new matter</button>
+    </div>
+    <div style="display:grid;grid-template-columns:2.5fr 0.9fr 1.8fr 1.5fr 1fr 0.9fr 0.9fr;border-bottom:2px solid var(--color-text)">
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Matter</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Stage</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Gates</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Next clock</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Next hearing</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Counsel</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 10px">Awaiting counsel</div>
+    </div>
+    <sc-for list="{{ boardRows }}" as="r" hint-placeholder-count="2">
+      <div onClick="{{ r.onOpen }}" style="display:grid;grid-template-columns:2.5fr 0.9fr 1.8fr 1.5fr 1fr 0.9fr 0.9fr;border-bottom:1px solid var(--color-divider);cursor:pointer;background:var(--color-surface)" style-hover="background:var(--color-neutral-100)" title="Open the matter record">
+        <div style="padding:13px 10px"><div style="font-family:var(--font-heading);font-size:14.5px;font-weight:600">{{ r.title }}</div><div style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--color-neutral-600);margin-top:3px">{{ r.forum }}</div></div>
+        <div style="padding:15px 10px"><span style="{{ r.stageStyle }}">{{ r.stage }}</span></div>
+        <div style="padding:13px 10px;display:flex;flex-direction:column;gap:5px;align-items:flex-start"><span style="{{ r.pimStyle }}">{{ r.pim }}</span><span style="{{ r.compStyle }}">{{ r.comp }}</span></div>
+        <div style="padding:15px 10px"><span style="{{ r.clockStyle }}">{{ r.clock }}</span></div>
+        <div style="padding:15px 10px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--color-neutral-700)">{{ r.hearing }}</div>
+        <div style="padding:15px 10px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--color-neutral-700)">{{ r.counsel }}</div>
+        <div style="padding:15px 10px;font-family:ui-monospace,Menlo,monospace;font-size:13px">{{ r.awaiting }}</div>
+      </div>
+    </sc-for>
+  </div>
+  </sc-if>
+
+  <!-- PAGE 2B · INTAKE -->
+  <sc-if value="{{ isIntake }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Intake" style="max-width:760px;margin:0 auto;padding:56px 32px 96px;animation:cms-fade .3s">
+
+    <sc-if value="{{ stepForm }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-bottom:36px">
+        <h1 style="font-variant:small-caps;letter-spacing:2.5px;font-size:21px;font-weight:600;margin:0">Institution of a Matter</h1>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--color-neutral-600);letter-spacing:1px;margin-top:8px">{{ stepIndicator }}</div>
+      </div>
+
+      <sc-if value="{{ step1 }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:20px">1 · Parties and Forum</div>
+        <label style="display:block;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:5px">Cause title</label>
+        <input class="input" value="{{ iTitle }}" onChange="{{ setTitle }}" style="font-family:var(--font-heading);margin-bottom:18px">
+        <label style="display:block;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:5px">Forum</label>
+        <select class="input" value="{{ iForum }}" onChange="{{ setForum }}" style="margin-bottom:18px">
+          <option>Commercial Court, Hyderabad</option>
+          <option>Commercial Court, Ranga Reddy</option>
+          <option>Commercial Court, Karimnagar</option>
+        </select>
+        <label style="display:block;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:5px">Plaintiff(s)</label>
+        <sc-for list="{{ pRows }}" as="p" hint-placeholder-count="1">
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <input class="input" value="{{ p.value }}" onChange="{{ p.onChange }}">
+          </div>
+        </sc-for>
+        <button class="btn btn-ghost" onClick="{{ addPlaintiff }}" style="margin-bottom:18px">Add a further plaintiff</button>
+        <label style="display:block;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:5px">Defendant(s)</label>
+        <sc-for list="{{ dRows }}" as="d" hint-placeholder-count="1">
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <input class="input" value="{{ d.value }}" onChange="{{ d.onChange }}">
+          </div>
+        </sc-for>
+        <button class="btn btn-ghost" onClick="{{ addDefendant }}">Add a further defendant</button>
+        <p style="font-size:12.5px;color:var(--color-neutral-600);font-style:italic;margin:14px 0 0">One written-statement slot is created per defendant named.</p>
+        <div style="display:flex;justify-content:flex-end;margin-top:28px">
+          <button class="btn btn-primary" onClick="{{ toStep2 }}">Proceed to the record</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:6px">2 · The Record</div>
+        <p style="font-size:12.5px;color:var(--color-neutral-600);font-style:italic;margin:0 0 18px">Scanned instruments are read natively.</p>
+        <sc-for list="{{ slots }}" as="s" hint-placeholder-count="3">
+          <div onClick="{{ s.onAdd }}" title="Place a document in this slot" style="border:1px dashed var(--color-neutral-400);padding:14px 16px;margin-bottom:10px;cursor:pointer;background:var(--color-surface)" style-hover="background:var(--color-neutral-100)">
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-700)">{{ s.label }}</div>
+            <sc-if value="{{ s.hasChips }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+                <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="1">
+                  <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);padding:2px 8px;border-radius:2px">{{ c }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ s.empty }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12px;color:var(--color-neutral-500);margin-top:6px">Drop or click to place the instrument</div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div style="display:flex;justify-content:space-between;margin-top:28px">
+          <button class="btn btn-secondary" onClick="{{ toStep1 }}">Return to parties</button>
+          <button class="btn btn-primary" onClick="{{ toStep3 }}">Proceed to intake</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:14px">3 · Intake</div>
+        <div style="font-family:var(--font-heading);font-size:16px;font-weight:600;margin-bottom:4px">{{ iTitle }}</div>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--color-neutral-700);margin-bottom:14px">{{ iForum }} · {{ intakeSummary }}</div>
+        <p style="font-size:13px;color:var(--color-neutral-700);line-height:1.6;margin:0;max-width:60ch;text-wrap:pretty">On intake the record is read against the practice's rules, the section 12A position is screened first, and no clock is set until counsel confirms the case map.</p>
+        <div style="display:flex;justify-content:space-between;margin-top:28px">
+          <button class="btn btn-secondary" onClick="{{ toStep2b }}">Return to the record</button>
+          <button class="btn btn-primary" onClick="{{ runIntake }}">Run intake</button>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ processing }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:110px 0;animation:cms-fade .3s">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:2px;color:var(--color-neutral-600)">READING THE RECORD</div>
+        <div style="font-style:italic;font-size:16px;color:var(--color-neutral-700);margin-top:12px">No conclusion is drawn without counsel's confirmation.</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:cms-fade .3s">
+        <h2 style="font-variant:small-caps;letter-spacing:2px;font-size:18px;font-weight:600;margin:0">Section 12A — Pre-Institution Mediation</h2>
+        <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin:24px 0 8px">Facts capable of supporting urgency, as pleaded:</div>
+        <ul style="margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--color-neutral-700)">
+          <li>The plaint recites "grave and irreparable urgency" at ¶31 without particulars.</li>
+          <li>No interim relief is sought that could not await mediation.</li>
+          <li>The limitation period has more than eleven months left to run.</li>
+        </ul>
+        <div style="background:var(--color-accent-2-100);border:1px solid var(--color-accent-2-300);color:var(--color-accent-2-800);font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:1px;padding:11px 14px;margin:22px 0 16px">URGENCY NOT MADE OUT ON THE PLEADED FACTS</div>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-700);margin:0 0 26px;text-wrap:pretty">Institution without completing pre-institution mediation exposes the plaint to rejection under Order VII Rule 11. A recital of urgency without supporting facts does not satisfy the proviso.</p>
+        <div style="display:flex;gap:12px">
+          <button class="btn btn-primary" onClick="{{ mediateFirst }}">Complete mediation first</button>
+          <button class="btn btn-secondary" onClick="{{ openOverride }}">Record counsel's override</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ mapPending }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:cms-fade .3s">
+        <div style="background:var(--color-accent-100);border:1px solid var(--color-accent-300);color:var(--color-accent-800);font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:1px;padding:11px 14px;margin-bottom:18px">CASE MAP — AWAITING CONFIRMATION. NOTHING DOWNSTREAM RUNS UNTIL COUNSEL CONFIRMS.</div>
+        <div style="position:relative;background:var(--color-surface);border:1px solid var(--color-divider)">
+          <div style="{{ pendGridHead }}">
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">¶</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">Pleading</div>
+            <sc-for list="{{ pendDefs }}" as="h" hint-placeholder-count="1">
+              <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">{{ h }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ pendRows }}" as="row" hint-placeholder-count="6">
+            <div style="{{ pendGridRow }}">
+              <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;font-size:12px">{{ row.para }}</div>
+              <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-size:13px">{{ row.label }}</div>
+              <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="1">
+                <div style="padding:9px 12px;border-top:1px solid var(--color-divider);border-left:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--color-neutral-600);background-image:repeating-linear-gradient(45deg,rgba(32,30,29,0.05) 0,rgba(32,30,29,0.05) 3px,transparent 3px,transparent 6px)">{{ c }}</div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:20px">
+          <button class="btn btn-primary" onClick="{{ confirmMap }}">Confirm case map</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- PAGE 3 · MATTER RECORD — ONE SCREEN -->
+  <sc-if value="{{ isMatter }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Matter record" style="max-width:1200px;margin:0 auto;padding:44px 32px 96px;animation:cms-fade .3s">
+    <div style="border-bottom:2px solid var(--color-text);padding-bottom:16px">
+      <h1 style="font-size:23px;font-weight:600;margin:0">{{ mTitle }}</h1>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:baseline;margin-top:8px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--color-neutral-700)">
+        <span>{{ mForum }}</span>
+        <span>NEXT HEARING · {{ mHearing }}</span>
+        <span>COUNSEL · {{ mCounsel }}</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <span style="{{ mStageStyle }}">{{ mStage }}</span>
+        <span style="{{ mPimStyle }}">{{ mPim }}</span>
+        <span style="{{ mCompStyle }}">{{ mComp }}</span>
+      </div>
+    </div>
+
+    <!-- DECCAN -->
+    <sc-if value="{{ deccanMain }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:36px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Decision</div>
+        <sc-for list="{{ heroClocks }}" as="c" hint-placeholder-count="3">
+          <div style="{{ c.rowStyle }}">
+            <div style="{{ c.labelStyle }}">{{ c.label }}</div>
+            <div style="flex:1;height:12px;background:var(--color-neutral-200);position:relative">
+              <div style="{{ c.fillStyle }}"></div>
+            </div>
+            <sc-if value="{{ c.hasLink }}" hint-placeholder-val="{{ false }}">
+              <a href="#" onClick="{{ c.onLink }}" style="font-size:12.5px;white-space:nowrap">{{ c.link }}</a>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:48px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Case Map</div>
+        <div style="background:var(--color-surface);border:1px solid var(--color-divider)">
+          <div style="display:grid;grid-template-columns:64px 1.9fr 1fr 1fr 1fr;border-bottom:2px solid var(--color-text)">
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">¶</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">Pleading</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">D1 · Vault Build Co</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">D2</div>
+            <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);padding:8px 12px">D3</div>
+          </div>
+          <sc-for list="{{ mapRows }}" as="row" hint-placeholder-count="8">
+            <div style="display:grid;grid-template-columns:64px 1.9fr 1fr 1fr 1fr">
+              <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;font-size:12px">{{ row.para }}</div>
+              <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-size:13px">{{ row.label }}<sc-if value="{{ row.badge }}" hint-placeholder-val="{{ false }}"><span style="margin-left:8px;font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:600;letter-spacing:0.5px;color:var(--color-accent-800);border:1px solid var(--color-accent-300);padding:1px 6px;border-radius:2px;white-space:nowrap">D1 ADMITS · D2 DENIES — LEVERAGE</span></sc-if></div>
+              <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+                <div onClick="{{ cell.onClick }}" style="{{ cell.style }}" style-hover="filter:brightness(0.96)" title="Open the pleading extract">{{ cell.text }}</div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="margin-top:48px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Moves</div>
+        <div style="padding:16px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:12.5px;font-weight:600;letter-spacing:0.3px">O. XII R. 6 — JUDGMENT ON ADMISSIONS (PARTIAL) · D1 · APPLICATION</div>
+            <sc-if value="{{ notFinal }}" hint-placeholder-val="{{ true }}">
+              <button class="btn btn-primary" onClick="{{ onProceedDraft }}" style="white-space:nowrap">Proceed to draft</button>
+            </sc-if>
+            <sc-if value="{{ isFinal }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:600;letter-spacing:0.5px;color:var(--color-neutral-700);border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);padding:2px 7px;border-radius:2px">FINALISED — COUNSEL-SETTLED</span>
+            </sc-if>
+          </div>
+          <div style="margin-top:8px;padding-left:20px;font-size:13px;color:var(--color-neutral-700);line-height:1.6">
+            <div>Their best answer: the admission is qualified by the interest dispute.</div>
+            <div>Where this fails: if the admission reads as conditional — the prayer is confined to the unqualified principal.</div>
+          </div>
+        </div>
+        <div style="{{ heldStyle }}">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:12.5px;font-weight:600;letter-spacing:0.3px;color:var(--color-neutral-600)">O. XI R. 5 — PRODUCTION · D2 — HELD</div>
+            <button class="btn btn-secondary" disabled="" title="The application has not ripened." style="white-space:nowrap">Proceed to draft</button>
+          </div>
+          <div style="margin-top:8px;padding-left:20px;font-size:13px;color:var(--color-neutral-600);line-height:1.6">
+            <div>Notice served day <span style="font-family:ui-monospace,Menlo,monospace">3</span>; <span style="font-family:ui-monospace,Menlo,monospace">9 days</span> to run. Ripens on silence.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Exposure</div>
+        <sc-if value="{{ exposureLive }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:6px 0">
+            <div style="font-size:13.5px;color:var(--color-neutral-700);line-height:1.6;max-width:70ch"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--color-accent-2-800)">DISCLOSURE DEFECT · PLAINT ¶22</span><br>The plaint relies on Board minutes <span style="font-family:ui-monospace,Menlo,monospace">14.03.2024</span> — not on the disclosure list filed with it. Resolve before the defendants' inspection.</div>
+            <button class="btn btn-secondary" onClick="{{ markResolved }}" style="white-space:nowrap">Mark resolved</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ exposureResolved }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:6px 0;font-size:13.5px;color:var(--color-neutral-600)">Plaint ¶22 disclosure defect — <span style="font-family:ui-monospace,Menlo,monospace;font-weight:600;color:var(--color-neutral-700)">RESOLVED</span> and entered in the audit record.</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- KRISHNA -->
+    <sc-if value="{{ krishnaMain }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:36px;max-width:860px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">Pre-Institution</div>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-700);margin:0 0 18px;text-wrap:pretty">Section <span style="font-family:ui-monospace,Menlo,monospace">12A</span> mediation is required before the plaint can be instituted. The compliance gates are not yet applicable; only the mediation window runs.</p>
+        <div style="{{ pimRowStyle }}">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:600;color:var(--color-neutral-700);width:430px;flex:none">PIM WINDOW · DAY 16 OF 90 · 74 DAYS TO RUN</div>
+          <div style="flex:1;height:12px;background:var(--color-neutral-200);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:18%;background:var(--color-neutral-500)"></div></div>
+        </div>
+        <div style="margin-top:24px">
+          <sc-if value="{{ kPending }}" hint-placeholder-val="{{ true }}">
+            <button class="btn btn-primary" onClick="{{ kConfirm }}">Confirm mediation reference filed</button>
+          </sc-if>
+          <sc-if value="{{ kDone }}" hint-placeholder-val="{{ false }}">
+            <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--color-accent-800);border:1px solid var(--color-accent-300);background:var(--color-accent-100);padding:4px 10px;border-radius:2px">MEDIATION INITIATED — LOGGED</span>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- GENERIC (created matters) -->
+    <sc-if value="{{ genericPre }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:36px;max-width:860px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">Pre-Institution</div>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-700);margin:0 0 18px">The matter awaits completion of pre-institution mediation under section <span style="font-family:ui-monospace,Menlo,monospace">12A</span>. The compliance gates are not yet applicable.</p>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 0">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:600;color:var(--color-neutral-700);width:430px;flex:none">PIM WINDOW · DAY 0 OF 90 · 90 DAYS TO RUN</div>
+          <div style="flex:1;height:12px;background:var(--color-neutral-200);position:relative"></div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ genericInst }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:36px">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Clocks</div>
+        <sc-for list="{{ gClocks }}" as="c" hint-placeholder-count="1">
+          <div style="display:flex;align-items:center;gap:16px;padding:10px 0">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:600;color:var(--color-neutral-700);width:430px;flex:none">{{ c }}</div>
+            <div style="flex:1;height:12px;background:var(--color-neutral-200);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--color-neutral-600)"></div></div>
+          </div>
+        </sc-for>
+        <div style="margin-top:44px">
+          <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Case Map — Confirmed</div>
+          <div style="background:var(--color-surface);border:1px solid var(--color-divider)">
+            <sc-for list="{{ pendRows }}" as="row" hint-placeholder-count="6">
+              <div style="{{ pendGridRow }}">
+                <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;font-size:12px">{{ row.para }}</div>
+                <div style="padding:9px 12px;border-top:1px solid var(--color-divider);font-size:13px">{{ row.label }}</div>
+                <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="1">
+                  <div style="padding:9px 12px;border-top:1px solid var(--color-divider);border-left:1px solid var(--color-divider);font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:var(--color-neutral-600);background-image:repeating-linear-gradient(45deg,rgba(32,30,29,0.05) 0,rgba(32,30,29,0.05) 3px,transparent 3px,transparent 6px)">{{ c }}</div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="margin-top:44px">
+          <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;margin-bottom:10px">The Moves</div>
+          <div style="padding:14px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);font-size:13px;color:var(--color-neutral-600);font-style:italic">No move has ripened on this record.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- DRAFT PANEL · O.VIII R.10 -->
+  <sc-if value="{{ panelO8 }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDraft }}" style="position:fixed;inset:0;z-index:70;background:rgba(32,30,29,0.25)"></div>
+    <div style="position:fixed;top:56px;right:0;bottom:0;width:min(720px,94vw);z-index:71;background:var(--color-surface);border-left:1px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:28px 36px 48px;overflow:auto;animation:cms-fade .2s;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:0.5px">DRAFT · O. VIII R. 10 · D3</div>
+        <button class="btn btn-ghost" onClick="{{ closeDraft }}">Close</button>
+      </div>
+      <div style="background:var(--color-accent-2-100);border:1px solid var(--color-accent-2-300);color:var(--color-accent-2-800);font-size:14px;font-style:italic;padding:12px 16px;margin-bottom:18px">The lock was automatic. The filing never is.</div>
+      <div style="border:1px solid var(--color-divider);padding:28px 32px">
+        <div style="font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600;font-family:var(--font-heading)">O. VIII R. 10 — Pronouncement Against D3</div>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--color-neutral-600);margin:4px 0 16px">CC 214/2026 · D3 · WS RIGHT FORFEITED ON DAY 121 · FILE LOCKED DAY 131</div>
+        <p style="font-size:13.5px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 10px"><strong>I. Statutory basis.</strong> Order VIII Rule 10 read with the proviso to Order VIII Rule 1, as amended by the Commercial Courts Act, 2015.</p>
+        <p style="font-size:13.5px;line-height:1.65;color:var(--color-neutral-800);margin:0 0 10px"><strong>II. The position.</strong> D3 was served on <span style="font-family:ui-monospace,Menlo,monospace">18.03.2026</span>; no written statement was filed within <span style="font-family:ui-monospace,Menlo,monospace">120</span> days. The right stands forfeited by operation of law and cannot be revived.</p>
+        <p style="font-size:13.5px;line-height:1.65;color:var(--color-neutral-800);margin:0"><strong>III. Prayer.</strong> That the suit proceed against D3 without a written statement, and judgment be pronounced on the plaint as against D3.</p>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:18px">
+        <sc-if value="{{ o8Pending }}" hint-placeholder-val="{{ true }}">
+          <button class="btn btn-primary" onClick="{{ authoriseO8 }}">Authorise filing draft</button>
+        </sc-if>
+        <sc-if value="{{ o8Done }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--color-neutral-700);border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);padding:4px 10px;border-radius:2px">AUTHORISED BY COUNSEL — LOGGED</span>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DRAFT PANEL · O.XII R.6 -->
+  <sc-if value="{{ panelO12 }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDraft }}" style="position:fixed;inset:0;z-index:70;background:rgba(32,30,29,0.25)"></div>
+    <div style="position:fixed;top:56px;right:0;bottom:0;width:min(860px,96vw);z-index:71;background:var(--color-surface);border-left:1px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:28px 36px 48px;overflow:auto;animation:cms-fade .2s;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:0.5px">DRAFT · O. XII R. 6 · D1 · PARTIAL</div>
+        <button class="btn btn-ghost" onClick="{{ closeDraft }}">Close</button>
+      </div>
+      <div style="background:var(--color-accent-2-100);border:1px solid var(--color-accent-2-300);padding:12px 16px;margin-bottom:18px">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:1px;color:var(--color-accent-2-800)">RED FLAG — HOW THIS APPLICATION FAILS ON THESE FACTS</div>
+        <div style="font-size:13px;color:var(--color-neutral-800);line-height:1.55;margin-top:6px">If D1's admission reads as conditional on the interest dispute, the court will decline partial judgment. The prayer is therefore confined to the unqualified principal.</div>
+      </div>
+      <sc-if value="{{ citPending }}" hint-placeholder-val="{{ true }}">
+        <div style="background:var(--color-accent-100);border:1px solid var(--color-accent-300);padding:10px 16px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-size:13px;color:var(--color-neutral-800)"><span style="font-family:ui-monospace,Menlo,monospace;font-weight:600;color:var(--color-accent-800)">2 CITATIONS AWAITING VERIFICATION</span> — the authorities cited in Part III.</span>
+          <button class="btn btn-secondary" onClick="{{ verifyCit }}" style="white-space:nowrap">Record verification</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ citDone }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--color-divider);padding:8px 16px;margin-bottom:18px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--color-neutral-700);font-weight:600">CITATIONS VERIFIED — LOGGED</div>
+      </sc-if>
+      <div style="border:1px solid var(--color-divider);padding:30px 36px;font-family:var(--font-heading)">
+        <div style="text-align:center;font-variant:small-caps;letter-spacing:2px;font-size:16px;font-weight:600">Application Under Order XII Rule 6</div>
+        <div style="text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--color-neutral-600);margin:4px 0 20px">CC 214/2026 · AGAINST D1 · PARTIAL</div>
+        <p style="font-size:13.5px;line-height:1.7;margin:0 0 12px"><strong>I. Statutory basis.</strong> Order XII Rule 6, Code of Civil Procedure, 1908, read with <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">s. 16</span>, Commercial Courts Act, 2015.</p>
+        <p style="font-size:13.5px;line-height:1.7;margin:0 0 12px"><strong>II. Form.</strong> Interlocutory application in the suit, supported by affidavit; notice to D1 having preceded it as the practice requires.</p>
+        <p style="font-size:13.5px;line-height:1.7;margin:0 0 12px"><strong>III. The legal standard.</strong> The admission must be unequivocal, unambiguous and unconditional; the discretion is exercised only where nothing is left to trial <em>(Uttam Singh Duggal; Hira Lall — citations pending verification)</em>.</p>
+        <p style="font-size:13.5px;line-height:1.7;margin:0 0 12px"><strong>IV. Application to the record.</strong>
+          <sc-if value="{{ notRefined }}" hint-placeholder-val="{{ true }}"><span> D1's written statement at para 6 admits the principal of <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">₹2,41,00,000</span>, disputing interest alone; Ex. P-4 (Delivery acknowledgement, <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">11.01.2026</span>) stands unchallenged on the record.</span></sc-if>
+          <sc-if value="{{ refined }}" hint-placeholder-val="{{ false }}"><span style="background:var(--color-accent-100);transition:background 1s"> D1's admission at para 6 is anchored to Ex. P-4 (Delivery acknowledgement, <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">11.01.2026</span>), which D1 has nowhere denied; the principal of <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">₹2,41,00,000</span> therefore stands admitted on the pleadings and on the record alike, the qualification going to interest only.</span></sc-if>
+        </p>
+        <p style="font-size:13.5px;line-height:1.7;margin:0"><strong>V. Prayer.</strong> Judgment for the unqualified principal of <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px">₹2,41,00,000</span>, the question of interest alone proceeding to trial; costs.</p>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:18px">
+        <sc-if value="{{ notFinal }}" hint-placeholder-val="{{ true }}">
+          <button class="btn btn-primary" onClick="{{ onFinalise }}">Finalise draft</button>
+        </sc-if>
+        <sc-if value="{{ isFinal }}" hint-placeholder-val="{{ false }}">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--color-neutral-700);border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);padding:4px 10px;border-radius:2px">FINALISED — COUNSEL-SETTLED WORK PRODUCT</span>
+        </sc-if>
+      </div>
+      <div style="margin-top:36px;border-top:1px solid var(--color-divider);padding-top:20px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:12px">Refine</div>
+        <sc-if value="{{ refineDone }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:12px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:9px;letter-spacing:1px;color:var(--color-neutral-600);margin-bottom:3px">COUNSEL</div>
+            <div style="border:1px solid var(--color-divider);padding:8px 10px;font-size:13px;background:var(--color-neutral-100)">{{ refineSent }}</div>
+          </div>
+          <div style="margin-bottom:12px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:9px;letter-spacing:1px;color:var(--color-neutral-600);margin-bottom:3px">ENGINE</div>
+            <div style="border:1px solid var(--color-divider);padding:8px 10px;font-size:13px">Part IV revised — the admission is now anchored to Ex. P-4 and the qualification confined to interest. The revision is highlighted in the draft.</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ refining }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:1px;color:var(--color-neutral-600);margin-bottom:12px">REVISING — PART IV</div>
+        </sc-if>
+        <label style="display:block;font-size:12.5px;color:var(--color-neutral-700);margin-bottom:6px">Instruct a revision to this draft</label>
+        <textarea class="input" value="{{ refineText }}" onChange="{{ setRefineText }}" rows="3"></textarea>
+        <sc-if value="{{ canRefine }}" hint-placeholder-val="{{ true }}">
+          <button class="btn btn-secondary" onClick="{{ sendRefine }}" style="margin-top:10px">Record the instruction</button>
+        </sc-if>
+        <sc-if value="{{ refineSpent }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-secondary" disabled="" title="One revision has been recorded against this draft." style="margin-top:10px">Record the instruction</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- MAP CELL SIDE PANEL -->
+  <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePanel }}" style="position:fixed;inset:0;z-index:72;background:rgba(32,30,29,0.18)"></div>
+    <div style="position:fixed;top:56px;right:0;bottom:0;width:420px;z-index:73;background:var(--color-surface);border-left:1px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:28px 28px 40px;overflow:auto;animation:cms-fade .2s;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;letter-spacing:0.5px">{{ pHead }}</div>
+        <button class="btn btn-ghost" onClick="{{ closePanel }}">Close</button>
+      </div>
+      <div style="font-family:var(--font-heading);font-size:16px;font-weight:600;margin:8px 0 4px">{{ pLabel }}</div>
+      <div style="margin-bottom:20px"><span style="{{ pVerdictStyle }}">{{ pVerdict }}</span></div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:6px">Pleading extract</div>
+      <div style="font-size:14px;font-style:italic;line-height:1.65;border-left:2px solid var(--color-divider);padding-left:14px;margin-bottom:22px">{{ pExtract }}</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:6px">The strongest denial available on these facts</div>
+      <div style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-700);margin-bottom:22px">{{ pStrong }}</div>
+      <div style="font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-neutral-600);margin-bottom:6px">Where the filed pleading falls short</div>
+      <div style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-700)">{{ pShort }}</div>
+    </div>
+  </sc-if>
+
+  <!-- CLOCKS DRAWER -->
+  <sc-if value="{{ clocksOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:74;background:rgba(32,30,29,0.18)"></div>
+    <div style="position:fixed;top:56px;right:0;bottom:0;width:440px;z-index:75;background:var(--color-surface);border-left:1px solid var(--color-divider);box-shadow:var(--shadow-lg);overflow:auto;animation:cms-fade .2s">
+      <div style="padding:20px 24px 12px;border-bottom:2px solid var(--color-text);font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">All Clocks — Soonest First</div>
+      <sc-for list="{{ clockRows }}" as="c" hint-placeholder-count="4">
+        <div onClick="{{ c.onOpen }}" title="Open the matter with this clock highlighted" style="padding:14px 24px;border-bottom:1px solid var(--color-divider);cursor:pointer" style-hover="background:var(--color-neutral-100)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">{{ c.m }}</div>
+            <span style="{{ c.tagStyle }}">{{ c.tag }}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:4px">
+            <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--color-neutral-700)">{{ c.what }}</div>
+            <div style="{{ c.daysStyle }}">{{ c.days }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- REVIEW DRAWER -->
+  <sc-if value="{{ reviewOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:74;background:rgba(32,30,29,0.18)"></div>
+    <div style="position:fixed;top:56px;right:0;bottom:0;width:440px;z-index:75;background:var(--color-surface);border-left:1px solid var(--color-divider);box-shadow:var(--shadow-lg);overflow:auto;animation:cms-fade .2s">
+      <div style="padding:20px 24px 12px;border-bottom:2px solid var(--color-text);font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">Pending Counsel's Consideration</div>
+      <sc-if value="{{ noReview }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:20px 24px;font-size:13.5px;color:var(--color-neutral-600);font-style:italic">Nothing is pending before counsel.</div>
+      </sc-if>
+      <sc-for list="{{ reviewRows }}" as="r" hint-placeholder-count="3">
+        <div onClick="{{ r.onOpen }}" title="Open the item pending counsel" style="padding:14px 24px;border-bottom:1px solid var(--color-divider);cursor:pointer;background:var(--color-accent-100);border-left:3px solid var(--color-accent)" style-hover="background:var(--color-accent-200)">
+          <div style="font-family:var(--font-heading);font-size:14px;font-weight:600">{{ r.mn }}</div>
+          <div style="font-size:13px;color:var(--color-neutral-700);margin-top:3px">{{ r.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- AUDIT MODAL -->
+  <sc-if value="{{ auditOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAudit }}" style="position:fixed;inset:0;z-index:80;background:rgba(32,30,29,0.35)"></div>
+    <div style="position:fixed;top:9%;left:50%;transform:translateX(-50%);width:min(1000px,92vw);max-height:78vh;z-index:81;background:var(--color-surface);border:1px solid var(--color-divider);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;animation:cms-fade .2s">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 28px 14px;border-bottom:2px solid var(--color-text)">
+        <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:16px;font-weight:600">The Audit Record — Append-Only</div>
+        <button class="btn btn-ghost" onClick="{{ closeAudit }}">Close</button>
+      </div>
+      <div style="padding:14px 28px 0">
+        <input class="input" value="{{ auditFilter }}" onChange="{{ setAuditFilter }}" placeholder="Filter the record" style="font-family:ui-monospace,Menlo,monospace;font-size:12px">
+      </div>
+      <div style="padding:10px 28px 24px;overflow:auto">
+        <sc-for list="{{ auditRows }}" as="line" hint-placeholder-count="4">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.5;padding:7px 0;border-bottom:1px solid var(--color-divider);color:var(--color-neutral-700)">{{ line }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- OVERRIDE DIALOG -->
+  <sc-if value="{{ ovOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:80;background:rgba(32,30,29,0.35)"></div>
+    <div style="position:fixed;top:22%;left:50%;transform:translateX(-50%);width:min(540px,92vw);z-index:81;background:var(--color-surface);border:1px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:26px 30px;animation:cms-fade .2s;box-sizing:border-box">
+      <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">Record Counsel's Override — s. 12A</div>
+      <p style="font-size:13px;color:var(--color-neutral-700);line-height:1.55;margin:10px 0 14px">The override is counsel's act, on counsel's basis, entered in the audit record. State the basis on which urgency is made out.</p>
+      <textarea class="input" value="{{ ovText }}" onChange="{{ setOvText }}" rows="4" placeholder="The basis for the override, in counsel's words"></textarea>
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:16px">
+        <button class="btn btn-secondary" onClick="{{ ovCancel }}">Withdraw</button>
+        <sc-if value="{{ ovReady }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-primary" onClick="{{ ovConfirm }}">Record override</button>
+        </sc-if>
+        <sc-if value="{{ ovNotReady }}" hint-placeholder-val="{{ true }}">
+          <button class="btn btn-primary" disabled="" title="A typed basis is required before the override can be recorded.">Record override</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- CONFIRM DIALOG -->
+  <sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:80;background:rgba(32,30,29,0.35)"></div>
+    <div style="position:fixed;top:26%;left:50%;transform:translateX(-50%);width:min(500px,92vw);z-index:81;background:var(--color-surface);border:1px solid var(--color-divider);box-shadow:var(--shadow-lg);padding:26px 30px;animation:cms-fade .2s;box-sizing:border-box">
+      <div style="font-family:var(--font-heading);font-variant:small-caps;letter-spacing:2px;font-size:15px;font-weight:600">{{ confirmTitle }}</div>
+      <p style="font-size:13.5px;color:var(--color-neutral-700);line-height:1.6;margin:12px 0 0;text-wrap:pretty">{{ confirmBody }}</p>
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:22px">
+        <button class="btn btn-secondary" onClick="{{ confirmNo }}">Withdraw</button>
+        <button class="btn btn-primary" onClick="{{ confirmYes }}">{{ confirmLabel }}</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- TOAST -->
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:28px;right:28px;z-index:90;background:var(--color-neutral-900);color:var(--color-bg);font-size:13px;padding:12px 18px;border-radius:2px;box-shadow:var(--shadow-lg);animation:cms-fade .25s">{{ toastMsg }}</div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;processingMs&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1500,&quot;min&quot;:0,&quot;max&quot;:4000,&quot;step&quot;:250,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;startOnBoard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
+class Component extends DCLogic {
+  state = {
+    route: null, activeId: null, panel: null, drawer: null, auditOpen: false, auditFilter: '',
+    toastMsg: null, confirm: null, highlight: null, mapPanel: null,
+    audit: [
+      '21.07.2026 14:32 · case map confirmed · Deccan Infra · counsel (RSM) · rules v1.3',
+      '21.07.2026 14:31 · case map generated · Deccan Infra · engine · rules v1.3',
+      '21.07.2026 14:29 · intake run · Deccan Infra · engine',
+      '12.07.2026 09:16 · s.12A screen — mediation required on the pleaded facts · Krishna Agro · engine'
+    ],
+    review: [
+      { id: 'o8', m: 'deccan', mn: 'Deccan Infra', label: 'O.VIII R.10 filing — awaiting authorisation' },
+      { id: 'cit', m: 'deccan', mn: 'Deccan Infra', label: '2 citations awaiting verification' },
+      { id: 'k12a', m: 'krishna', mn: 'Krishna Agro', label: 's.12A mediation reference — awaiting counsel' }
+    ],
+    o8Auth: false, citVerified: false, exposureResolved: false, krishnaMediation: false,
+    draftStatus: 'DRAFT', refined: false, refining: false, refineDone: false, refineSent: '',
+    refineText: 'Tighten Part IV. Anchor the admission to the exhibit.',
+    step: 1, iTitle: 'M/s Meridian Constructions Pvt Ltd v. Storline Projects LLP',
+    iForum: 'Commercial Court, Hyderabad',
+    plaintiffs: ['M/s Meridian Constructions Pvt Ltd'], defendants: ['Storline Projects LLP'],
+    uploads: {}, processing: false, gate: false, ovOpen: false, ovText: '', mapPending: false,
+    extra: []
+  };
+  ms() { return this.props.processingMs ?? 1500; }
+  log(t) {
+    const d = new Date(), p = n => String(n).padStart(2, '0');
+    const line = p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' · ' + t;
+    this.setState(s => ({ audit: [line, ...s.audit] }));
+  }
+  toastNow(t) {
+    this.setState({ toastMsg: t });
+    clearTimeout(this._tt);
+    this._tt = setTimeout(() => this.setState({ toastMsg: null }), 3800);
+  }
+  dropReview(id) { this.setState(s => ({ review: s.review.filter(r => r.id !== id) })); }
+  chip(k) {
+    const base = { display: 'inline-block', fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '10px', fontWeight: 600, letterSpacing: '0.5px', padding: '2px 7px', border: '1px solid var(--color-neutral-300)', borderRadius: '2px', whiteSpace: 'nowrap', background: 'var(--color-surface)', color: 'var(--color-neutral-700)' };
+    if (k === 'green') return { ...base, color: 'var(--color-neutral-600)', background: 'var(--color-neutral-100)' };
+    if (k === 'crimson') return { ...base, color: 'var(--color-accent-2-800)', borderColor: 'var(--color-accent-2-300)', background: 'var(--color-accent-2-100)' };
+    if (k === 'amber' || k === 'violet') return { ...base, color: 'var(--color-accent-800)', borderColor: 'var(--color-accent-300)', background: 'var(--color-accent-100)' };
+    if (k === 'navy') return { ...base, color: 'var(--color-text)', borderColor: 'var(--color-neutral-400)' };
+    if (k === 'hatch') return { ...base, color: 'var(--color-neutral-600)', backgroundImage: 'repeating-linear-gradient(45deg,rgba(32,30,29,0.07) 0,rgba(32,30,29,0.07) 3px,transparent 3px,transparent 6px)' };
+    return base;
+  }
+  clockColor(k) { return k === 'green' ? 'var(--color-neutral-600)' : k === 'crimson' ? 'var(--color-accent-2-600)' : k === 'amber' ? 'var(--color-accent-700)' : 'var(--color-neutral-600)'; }
+  shortOf(t) {
+    const first = t.split(' v. ')[0].replace(/^M\/s\s+/, '');
+    return first.split(' ').slice(0, 2).join(' ');
+  }
+  openMatter(id) { this.setState({ route: 'matter', activeId: id, panel: null, drawer: null, mapPanel: null }); }
+  hl(key) {
+    this.setState({ highlight: key });
+    clearTimeout(this._ht);
+    this._ht = setTimeout(() => this.setState({ highlight: null }), 3500);
+  }
+  resetIntake() {
+    this.setState({
+      route: 'intake', step: 1, processing: false, gate: false, ovOpen: false, ovText: '', mapPending: false,
+      uploads: {}, drawer: null, auditOpen: false,
+      iTitle: 'M/s Meridian Constructions Pvt Ltd v. Storline Projects LLP', iForum: 'Commercial Court, Hyderabad',
+      plaintiffs: ['M/s Meridian Constructions Pvt Ltd'], defendants: ['Storline Projects LLP']
+    });
+  }
+  createMatter(pre) {
+    const s = this.state, id = 'm' + Date.now();
+    const city = s.iForum.replace('Commercial Court, ', '');
+    const m = {
+      id, title: s.iTitle, short: this.shortOf(s.iTitle),
+      forum: (pre ? 'Pre-filing · ' : 'To be numbered · ') + city,
+      pre, defs: s.defendants.filter(d => d.trim()).map((d, i) => 'D' + (i + 1))
+    };
+    this.setState(st => ({ extra: [...st.extra, m] }));
+    return m;
+  }
+  matterMeta(id) {
+    const s = this.state;
+    if (id === 'deccan') return {
+      title: 'M/s Deccan Infra Pvt Ltd v. Vault Build Co & 2 Ors', short: 'Deccan Infra', forum: 'CC 214/2026 · Hyderabad',
+      hearing: '18.08.2026 · CASE MANAGEMENT', counsel: 'RSM · AK',
+      stage: 'STRATEGY', pim: { t: 'PIM: WAIVER RECORDED', k: 'green' }, comp: { t: 'COMPLIANCE: 1 DEFECT — VALUATION', k: 'crimson' }
+    };
+    if (id === 'krishna') return {
+      title: 'M/s Krishna Agro Exports v. Sunrise Warehousing', short: 'Krishna Agro', forum: 'Pre-filing · Ranga Reddy',
+      hearing: 'NOT YET DATED', counsel: 'RSM',
+      stage: 'PRE-INSTITUTION',
+      pim: s.krishnaMediation ? { t: 'PIM: MEDIATION INITIATED', k: 'amber' } : { t: 'PIM: MEDIATION REQUIRED', k: 'crimson' },
+      comp: { t: 'COMPLIANCE: NOT YET APPLICABLE', k: 'hatch' }
+    };
+    const m = s.extra.find(x => x.id === id);
+    if (!m) return { title: '', short: '', forum: '', hearing: '', counsel: '', stage: '', pim: { t: '', k: 'neutral' }, comp: { t: '', k: 'neutral' } };
+    return {
+      title: m.title, short: m.short, forum: m.forum, hearing: 'NOT YET DATED', counsel: 'RSM',
+      stage: m.pre ? 'PRE-INSTITUTION' : 'PLEADINGS',
+      pim: m.pre ? { t: 'PIM: MEDIATION REQUIRED', k: 'crimson' } : { t: 'PIM: OVERRIDE RECORDED', k: 'amber' },
+      comp: m.pre ? { t: 'COMPLIANCE: NOT YET APPLICABLE', k: 'hatch' } : { t: 'COMPLIANCE: NO DEFECT FOUND', k: 'green' }
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const route = s.route ?? (this.props.startOnBoard ? 'board' : 'overview');
+    const active = s.activeId ? this.matterMeta(s.activeId) : null;
+    const tab = on => ({
+      background: 'none', border: 'none', borderBottom: on ? '2px solid var(--color-accent)' : '2px solid transparent',
+      color: on ? 'var(--color-accent-800)' : 'var(--color-neutral-700)', cursor: 'pointer', padding: '0 16px', height: '100%',
+      fontFamily: 'var(--font-heading)', fontSize: '14px', fontWeight: on ? 600 : 400
+    });
+    const clockText = k => ({ fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '11.5px', fontWeight: 600, letterSpacing: '0.3px', color: this.clockColor(k) });
+    const awaitingFor = id => s.review.filter(r => r.m === id).length;
+    const boardRows = [];
+    boardRows.push({
+      title: 'M/s Deccan Infra Pvt Ltd v. Vault Build Co & 2 Ors', forum: 'CC 214/2026 · Hyderabad',
+      stage: 'STRATEGY', stageStyle: this.chip('navy'),
+      pim: 'PIM: WAIVER RECORDED', pimStyle: this.chip('green'),
+      comp: 'COMPLIANCE: 1 DEFECT — VALUATION', compStyle: this.chip('crimson'),
+      clock: 'O.XI INSPECTION — D2 — 9 DAYS', clockStyle: clockText('amber'),
+      hearing: '18.08.2026', counsel: 'RSM · AK',
+      awaiting: String(awaitingFor('deccan')), onOpen: () => this.openMatter('deccan')
+    });
+    boardRows.push({
+      title: 'M/s Krishna Agro Exports v. Sunrise Warehousing', forum: 'Pre-filing · Ranga Reddy',
+      stage: 'PRE-INSTITUTION', stageStyle: this.chip('neutral'),
+      pim: s.krishnaMediation ? 'PIM: MEDIATION INITIATED' : 'PIM: MEDIATION REQUIRED', pimStyle: this.chip(s.krishnaMediation ? 'amber' : 'crimson'),
+      comp: 'COMPLIANCE: NOT YET APPLICABLE', compStyle: this.chip('hatch'),
+      clock: 'PIM WINDOW — 74 DAYS', clockStyle: clockText('neutral'),
+      hearing: '—', counsel: 'RSM',
+      awaiting: String(awaitingFor('krishna')), onOpen: () => this.openMatter('krishna')
+    });
+    s.extra.forEach(m => {
+      const meta = this.matterMeta(m.id);
+      boardRows.push({
+        title: m.title, forum: m.forum, stage: meta.stage, stageStyle: this.chip(m.pre ? 'neutral' : 'navy'),
+        pim: meta.pim.t, pimStyle: this.chip(meta.pim.k), comp: meta.comp.t, compStyle: this.chip(meta.comp.k),
+        clock: m.pre ? 'PIM WINDOW — 90 DAYS' : 'WS — D1 — 30 DAYS', clockStyle: clockText(m.pre ? 'neutral' : 'green'),
+        hearing: '—', counsel: 'RSM',
+        awaiting: '0', onOpen: () => this.openMatter(m.id)
+      });
+    });
+    const clockDefs = [
+      { m: 'Deccan Infra', id: 'deccan', what: 'WS — D1 · DAY 27 OF 30', n: 3, tag: 'AT A PRICE', k: 'amber', hl: 'd1' },
+      { m: 'Deccan Infra', id: 'deccan', what: 'O.XI R.5 INSPECTION — D2', n: 9, tag: 'AT A PRICE', k: 'amber', hl: 'insp' },
+      { m: 'Deccan Infra', id: 'deccan', what: 'WS OUTER LIMIT — D2 · DAY 96 OF 120', n: 24, tag: 'NEVER', k: 'crimson', hl: 'd2' },
+      { m: 'Krishna Agro', id: 'krishna', what: 'PIM WINDOW — s.12A', n: 74, tag: 'DIFFERENT TEST', k: 'amber', hl: 'pim' }
+    ];
+    s.extra.forEach(m => clockDefs.push(m.pre
+      ? { m: m.short, id: m.id, what: 'PIM WINDOW — s.12A', n: 90, tag: 'DIFFERENT TEST', k: 'amber', hl: null }
+      : { m: m.short, id: m.id, what: 'WS — D1 · DAY 0 OF 30', n: 30, tag: 'AT A PRICE', k: 'amber', hl: null }));
+    const clockRows = clockDefs.sort((a, b) => a.n - b.n).map(c => ({
+      m: c.m, what: c.what, days: c.n + (c.n === 1 ? ' DAY' : ' DAYS'),
+      daysStyle: { fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '12px', fontWeight: 600, color: c.n <= 10 ? 'var(--color-accent-2-700)' : 'var(--color-text)' },
+      tag: c.tag, tagStyle: this.chip(c.k),
+      onOpen: () => { this.openMatter(c.id); if (c.hl) this.hl(c.hl); }
+    }));
+    const reviewRows = s.review.map(r => ({
+      mn: r.mn, label: r.label,
+      onOpen: () => {
+        if (r.id === 'o8') this.setState({ route: 'matter', activeId: 'deccan', panel: 'o8', drawer: null });
+        else if (r.id === 'cit') this.setState({ route: 'matter', activeId: 'deccan', panel: 'o12', drawer: null });
+        else this.setState({ route: 'matter', activeId: 'krishna', panel: null, drawer: null });
+      }
+    }));
+    const f = s.auditFilter.trim().toLowerCase();
+    const auditRows = f ? s.audit.filter(l => l.toLowerCase().includes(f)) : s.audit;
+    const heroRow = (key, label, color, pct, extraFill, link, onLink) => ({
+      key, label, hasLink: !!link, link, onLink,
+      rowStyle: {
+        display: 'flex', alignItems: 'center', gap: '16px', padding: '10px 12px',
+        border: '1px solid ' + (s.highlight === key ? 'var(--color-accent)' : 'transparent'),
+        background: s.highlight === key ? 'var(--color-accent-100)' : 'transparent', transition: 'background .4s,border-color .4s'
+      },
+      labelStyle: { fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '13px', fontWeight: 600, letterSpacing: '0.3px', color, width: '430px', flex: 'none' },
+      fillStyle: { position: 'absolute', left: 0, top: 0, bottom: 0, width: pct, background: color, ...(extraFill || {}) }
+    });
+    const heroClocks = [
+      heroRow('d1', 'D1 · WS DAY 27 · IN TIME', 'var(--color-neutral-600)', '22.5%'),
+      heroRow('d2', 'D2 · WS DAY 96 · WITHIN OUTER LIMIT — COSTS', 'var(--color-accent-700)', '80%'),
+      heroRow('d3', 'D3 · DAY 131 · RIGHT FORFEITED — FILE LOCKED', 'var(--color-accent-2-600)', '100%', { borderRight: '10px solid var(--color-accent-2-900)' },
+        s.o8Auth ? 'O.VIII R.10 draft — authorised' : 'O.VIII R.10 draft — awaiting authorisation',
+        e => { e.preventDefault(); this.setState({ panel: 'o8' }); })
+    ];
+    const CT = {
+      A: { t: 'ADMITTED', bg: 'var(--color-neutral-100)', c: 'var(--color-neutral-700)' },
+      D: { t: 'DENIED', bg: 'var(--color-surface)', c: 'var(--color-text)' },
+      N: { t: 'NO SPECIFIC DENIAL — O.VIII R.5', bg: 'var(--color-accent-100)', c: 'var(--color-accent-800)' }
+    };
+    const mapDef = [
+      ['¶1', 'Parties and incorporation', 'A', 'A', 'A'],
+      ['¶2', 'The works contract, 07.06.2023', 'A', 'D', 'D'],
+      ['¶3', 'Delivery and acknowledgement, 11.01.2026', 'A', 'N', 'D'],
+      ['¶4', 'Principal outstanding — ₹2,41,00,000', 'A', 'D', 'N'],
+      ['¶5', 'Interest at 18% p.a.', 'D', 'D', 'D'],
+      ['¶6', 'Demand notice, 03.11.2025', 'A', 'N', 'N'],
+      ['¶7', 'Part-payment of ₹40,00,000', 'N', 'D', 'D'],
+      ['¶8', 'Cause of action and jurisdiction', 'D', 'D', 'D']
+    ];
+    const mapRows = mapDef.map(r => ({
+      para: r[0], label: r[1], badge: r[0] === '¶4',
+      cells: [2, 3, 4].map((i, di) => {
+        const c = CT[r[i]];
+        return {
+          text: c.t,
+          style: { padding: '9px 12px', borderTop: '1px solid var(--color-divider)', borderLeft: '1px solid var(--color-divider)', fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '10.5px', fontWeight: 600, color: c.c, background: c.bg, cursor: 'pointer' },
+          onClick: () => this.setState({ mapPanel: { para: r[0], label: r[1], def: 'D' + (di + 1), kind: r[i] } })
+        };
+      })
+    }));
+    const PANEL = {
+      A: {
+        extract: '"The defendant admits the contents of the paragraph under reply, save as to the characterisation of interest, which is denied."',
+        strong: 'None on the filed pleading — the admission stands. The only room left is the qualification as to interest.',
+        short: 'The admission is on the record; the deficiency, if any, lies in its qualification, which goes to interest alone.'
+      },
+      D: {
+        extract: '"The contents of the paragraph under reply are denied and the plaintiff is put to strict proof thereof."',
+        strong: 'A specific traverse tied to the ledger entries and the correspondence of the relevant period, with particulars.',
+        short: 'The denial is bare — it engages neither the acknowledgement nor the ledger, and invites a notice to admit under O.XII.'
+      },
+      N: {
+        extract: '"The written statement addresses the paragraph only by the general traverse at its para 2."',
+        strong: 'A paragraph-specific denial engaging the document relied upon, filed within the time remaining.',
+        short: 'Order VIII Rule 5 deems the fact admitted absent specific denial; the general traverse does not reach it.'
+      }
+    };
+    const mp = s.mapPanel;
+    const pKind = mp ? mp.kind : 'A';
+    const conf = s.confirm;
+    const heldStyle = {
+      padding: '16px 12px',
+      backgroundImage: 'repeating-linear-gradient(45deg,rgba(32,30,29,0.035) 0,rgba(32,30,29,0.035) 4px,transparent 4px,transparent 9px)',
+      borderBottom: '1px solid var(--color-divider)',
+      border: s.highlight === 'insp' ? '1px solid var(--color-accent)' : undefined,
+      transition: 'border-color .4s'
+    };
+    const pimRowStyle = {
+      display: 'flex', alignItems: 'center', gap: '16px', padding: '10px 12px',
+      border: '1px solid ' + (s.highlight === 'pim' ? 'var(--color-accent)' : 'transparent'),
+      background: s.highlight === 'pim' ? 'var(--color-accent-100)' : 'transparent', transition: 'background .4s,border-color .4s'
+    };
+    const pRows = s.plaintiffs.map((v, i) => ({
+      value: v, onChange: e => { const a = s.plaintiffs.slice(); a[i] = e.target.value; this.setState({ plaintiffs: a }); }
+    }));
+    const dRows = s.defendants.map((v, i) => ({
+      value: v, onChange: e => { const a = s.defendants.slice(); a[i] = e.target.value; this.setState({ defendants: a }); }
+    }));
+    const slotNames = ['Plaint', ...s.defendants.filter(d => d.trim()).map(d => 'Written statement — ' + d), 'Evidence and correspondence'];
+    const slots = slotNames.map(label => {
+      const chips = s.uploads[label] || [];
+      return {
+        label, chips, hasChips: chips.length > 0, empty: chips.length === 0,
+        onAdd: () => {
+          const base = label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+          const name = base + (chips.length ? '_' + (chips.length + 1) : '') + '_scan.pdf';
+          this.setState(st => ({ uploads: { ...st.uploads, [label]: [...(st.uploads[label] || []), name] } }));
+        }
+      };
+    });
+    const nDefs = s.defendants.filter(d => d.trim()).length || 1;
+    const pendDefs = Array.from({ length: nDefs }, (_, i) => 'D' + (i + 1));
+    const pendLabels = ['Parties', 'The agreement', 'Performance and breach', 'The amount claimed', 'Notice before action', 'Jurisdiction and valuation'];
+    const pendRows = pendLabels.map((label, i) => ({ para: '¶' + (i + 1), label, cells: pendDefs.map(() => 'AWAITING WS') }));
+    const pendCols = '64px 1.9fr ' + pendDefs.map(() => '1fr').join(' ');
+    const stepNames = ['1 · Parties and forum', '2 · The record', '3 · Intake'];
+    const stepIndicator = stepNames.map((n, i) => (i + 1 === s.step ? '[' + n.toUpperCase() + ']' : n.toUpperCase())).join('   ·   ');
+    const stepForm = route === 'intake' && !s.processing && !s.gate && !s.mapPending;
+    const activeExtra = s.extra.find(x => x.id === s.activeId);
+    const gClocks = activeExtra ? activeExtra.defs.map(d => d + ' · WS DAY 0 · IN TIME') : [];
+    return {
+      goOverview: () => this.setState({ route: 'overview', drawer: null }),
+      goMatters: () => this.setState({ route: 'board', drawer: null }),
+      goOpen: () => { if (s.activeId) this.setState({ route: 'matter', panel: null, drawer: null }); },
+      tabOverview: tab(route === 'overview'), tabMatters: tab(route === 'board' || route === 'intake'),
+      tabOpen: { ...tab(route === 'matter'), ...(s.activeId ? {} : { opacity: 0.45, cursor: 'not-allowed' }) },
+      openLabel: active ? active.short : 'Open matter',
+      openTitle: s.activeId ? 'Return to the open matter' : 'No matter open',
+      onClocks: () => this.setState({ drawer: s.drawer === 'clocks' ? null : 'clocks' }),
+      onReview: () => this.setState({ drawer: s.drawer === 'review' ? null : 'review' }),
+      onAudit: () => this.setState({ auditOpen: true, drawer: null }),
+      onNew: () => this.resetIntake(),
+      hasReview: s.review.length > 0, reviewCount: String(s.review.length),
+      isOverview: route === 'overview', isBoard: route === 'board', isIntake: route === 'intake', isMatter: route === 'matter' && !!active,
+      boardRows,
+      stepForm, step1: s.step === 1, step2: s.step === 2, step3: s.step === 3, stepIndicator,
+      iTitle: s.iTitle, setTitle: e => this.setState({ iTitle: e.target.value }),
+      iForum: s.iForum, setForum: e => this.setState({ iForum: e.target.value }),
+      pRows, dRows,
+      addPlaintiff: () => this.setState(st => ({ plaintiffs: [...st.plaintiffs, ''] })),
+      addDefendant: () => this.setState(st => ({ defendants: [...st.defendants, ''] })),
+      toStep1: () => this.setState({ step: 1 }), toStep2: () => this.setState({ step: 2 }),
+      toStep2b: () => this.setState({ step: 2 }), toStep3: () => this.setState({ step: 3 }),
+      slots,
+      intakeSummary: s.plaintiffs.filter(p => p.trim()).length + ' PLAINTIFF(S) · ' + nDefs + ' DEFENDANT(S) · ' + Object.values(s.uploads).reduce((a, b) => a + b.length, 0) + ' INSTRUMENT(S)',
+      runIntake: () => {
+        this.setState({ processing: true });
+        this.log('intake run · ' + this.shortOf(s.iTitle) + ' · engine');
+        setTimeout(() => {
+          this.setState({ processing: false, gate: true });
+          this.log('s.12A screen — urgency not made out on the pleaded facts · ' + this.shortOf(this.state.iTitle) + ' · engine');
+        }, this.ms());
+      },
+      processing: s.processing, gateOpen: s.gate,
+      mediateFirst: () => {
+        const m = this.createMatter(true);
+        this.log('matter created in pre-institution · ' + m.short + ' · counsel (RSM) elected mediation first');
+        this.setState({ route: 'board', gate: false });
+        this.toastNow('The matter stands in pre-institution. The PIM window is running.');
+      },
+      openOverride: () => this.setState({ ovOpen: true }),
+      ovOpen: s.ovOpen, ovText: s.ovText, setOvText: e => this.setState({ ovText: e.target.value }),
+      ovReady: s.ovText.trim().length > 0, ovNotReady: s.ovText.trim().length === 0,
+      ovCancel: () => this.setState({ ovOpen: false, ovText: '' }),
+      ovConfirm: () => {
+        this.log("s.12A override recorded · " + this.shortOf(s.iTitle) + " · counsel (RSM) · basis: \u201C" + s.ovText.trim() + "\u201D");
+        this.setState({ ovOpen: false, gate: false, mapPending: true });
+      },
+      mapPending: s.mapPending, pendDefs, pendRows,
+      pendGridHead: { display: 'grid', gridTemplateColumns: pendCols, borderBottom: '2px solid var(--color-text)' },
+      pendGridRow: { display: 'grid', gridTemplateColumns: pendCols },
+      confirmMap: () => {
+        const m = this.createMatter(false);
+        this.log('case map confirmed · ' + m.short + ' · counsel (RSM) · rules v1.3');
+        this.setState({ mapPending: false, route: 'matter', activeId: m.id, panel: null });
+        this.toastNow('Clocks and recommendations are now live');
+      },
+      mTitle: active ? active.title : '', mForum: active ? active.forum : '',
+      mHearing: active ? active.hearing : '', mCounsel: active ? active.counsel : '',
+      mStage: active ? active.stage : '', mStageStyle: this.chip(active && active.stage === 'STRATEGY' ? 'navy' : 'neutral'),
+      mPim: active ? active.pim.t : '', mPimStyle: this.chip(active ? active.pim.k : 'neutral'),
+      mComp: active ? active.comp.t : '', mCompStyle: this.chip(active ? active.comp.k : 'neutral'),
+      deccanMain: s.activeId === 'deccan',
+      panelO8: s.activeId === 'deccan' && s.panel === 'o8',
+      panelO12: s.activeId === 'deccan' && s.panel === 'o12',
+      krishnaMain: s.activeId === 'krishna',
+      genericPre: !!activeExtra && activeExtra.pre, genericInst: !!activeExtra && !activeExtra.pre,
+      gClocks,
+      closeDraft: () => this.setState({ panel: null }),
+      heroClocks, mapRows, heldStyle,
+      exposureLive: !s.exposureResolved, exposureResolved: s.exposureResolved,
+      markResolved: () => { this.setState({ exposureResolved: true }); this.log('disclosure defect resolved · plaint ¶22 · Deccan Infra · counsel (RSM)'); },
+      onProceedDraft: () => this.setState({ confirm: 'toDraft' }),
+      panelOpen: !!mp,
+      pHead: mp ? mp.para + ' × ' + mp.def : '', pLabel: mp ? mp.label : '',
+      pVerdict: mp ? CT[pKind].t : '', pVerdictStyle: this.chip(pKind === 'A' ? 'green' : pKind === 'N' ? 'amber' : 'neutral'),
+      pExtract: PANEL[pKind].extract, pStrong: PANEL[pKind].strong, pShort: PANEL[pKind].short,
+      closePanel: () => this.setState({ mapPanel: null }),
+      o8Pending: !s.o8Auth, o8Done: s.o8Auth,
+      authoriseO8: () => {
+        this.setState({ o8Auth: true });
+        this.dropReview('o8');
+        this.log('O.VIII R.10 filing authorised · Deccan Infra · D3 · counsel (RSM)');
+        this.toastNow('The filing draft is authorised and logged.');
+      },
+      isFinal: s.draftStatus === 'FINALISED', notFinal: s.draftStatus !== 'FINALISED',
+      refined: s.refined, notRefined: !s.refined, refining: s.refining, refineDone: s.refineDone, refineSent: s.refineSent,
+      refineText: s.refineText, setRefineText: e => this.setState({ refineText: e.target.value }),
+      canRefine: !s.refining && !s.refineDone, refineSpent: s.refining || s.refineDone,
+      sendRefine: () => {
+        const sent = s.refineText.trim() || 'Tighten Part IV. Anchor the admission to the exhibit.';
+        this.setState({ refining: true, refineSent: sent, refineText: '' });
+        setTimeout(() => this.setState({ refining: false, refineDone: true, refined: true }), this.ms());
+      },
+      citPending: s.review.some(r => r.id === 'cit'), citDone: s.citVerified,
+      verifyCit: () => {
+        this.setState({ citVerified: true });
+        this.dropReview('cit');
+        this.log('2 citations verified · O.XII R.6 draft · Deccan Infra · counsel (RSM)');
+      },
+      onFinalise: () => this.setState({ confirm: 'finalise' }),
+      pimRowStyle, kPending: !s.krishnaMediation, kDone: s.krishnaMediation,
+      kConfirm: () => {
+        this.setState({ krishnaMediation: true });
+        this.dropReview('k12a');
+        this.log('mediation reference filed · Krishna Agro · counsel (RSM)');
+        this.toastNow('The mediation reference is recorded.');
+      },
+      clocksOpen: s.drawer === 'clocks', reviewOpen: s.drawer === 'review',
+      closeDrawer: () => this.setState({ drawer: null }),
+      clockRows, reviewRows, noReview: s.review.length === 0,
+      auditOpen: s.auditOpen, closeAudit: () => this.setState({ auditOpen: false }),
+      auditFilter: s.auditFilter, setAuditFilter: e => this.setState({ auditFilter: e.target.value }),
+      auditRows,
+      confirmOpen: !!conf,
+      confirmTitle: conf === 'finalise' ? 'Finalise the Draft' : 'Proceed to Draft — O. XII R. 6',
+      confirmBody: conf === 'finalise'
+        ? 'On finalisation this draft enters the record as counsel-settled work product and is logged.'
+        : 'RED FLAG restated: if D1\u2019s admission reads as conditional on the interest dispute, the court will decline partial judgment. The prayer is confined to the unqualified principal.',
+      confirmLabel: conf === 'finalise' ? 'Finalise' : 'Proceed to draft',
+      confirmNo: () => this.setState({ confirm: null }),
+      confirmYes: () => {
+        if (conf === 'finalise') {
+          this.setState({ confirm: null, draftStatus: 'FINALISED', citVerified: true });
+          if (this.state.review.some(r => r.id === 'cit')) this.dropReview('cit');
+          this.log('O.XII R.6 draft finalised · counsel-settled work product · Deccan Infra · counsel (RSM)');
+          this.toastNow('The draft is finalised and entered on the record.');
+        } else {
+          this.setState({ confirm: null, panel: 'o12' });
+        }
+      },
+      hasToast: !!s.toastMsg, toastMsg: s.toastMsg
+    };
+  }
+}
+</script>
 </body>
 </html>
